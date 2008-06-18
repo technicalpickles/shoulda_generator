@@ -2,16 +2,17 @@
 
 One night at a Boston Ruby hackfest, I finally got sick of using the Rails default generators, and have to hack them to meet my needs and tastes. This includes:
 
- * [shoulda]
- * [aml]
- * [blueprint]
+ * [shoulda](http://thoughtbot.com/projects/shoulda)
+ * [factory_girl](http://github.com/thoughtbot/factory_girl)
+ * [haml](http://haml.hamptoncatlin.com/)
+ * [blueprint](http://code.google.com/p/blueprintcss/)
 
 
 The next morning, I was struck awake at 5am with the inspiration to start implementing it.
 
 ## what you get
 
-### shoulda_model
+### shoulda\_model
 
  * works the same as the 'model' generator
  * a new model
@@ -24,27 +25,26 @@ Prereqs:
  * [shoulda](http://thoughtbot.com/projects/shoulda) installed as a plugin
  * [factory_girl](http://github.com/thoughtbot/factory_girl) gem installed
 
-### shoulda_haml_scaffold
+### shoulda\_haml\_scaffold
 
  * everything included in shoulda_model
  * a controller (sans unnecessary comments)
- * templates built written in [haml]()
- * a layout written in [haml]() and styled with [blueprint]()
+ * templates built written in [haml](http://haml.hamptoncatlin.com/)
+ * a layout written in [haml](http://haml.hamptoncatlin.com/) and styled with [blueprint](http://code.google.com/p/blueprintcss/)
  * a helper
  * a shoulda functional test which uses the factory_girl factory
 
 Prereqs:
 
  * [shoulda](http://thoughtbot.com/projects/shoulda) installed as a plugin
- * [factory_girl]() gem installed
- * [haml]() gem installed on the system, and the project has been hamlified using  `haml --rails` on the project
- * 
+ * [factory_girl](http://github.com/thoughtbot/factory_girl) gem installed
+ * [haml](http://haml.hamptoncatlin.com/) gem installed on the system, and the project has been hamlified using  `haml --rails` on the project
 
 ## getting it
 
 You can install it as a plugin for the time being. I plan on having a gem soon enough.
 
-With rails 2.1, you can do:
+With Rails 2.1, you can do:
 
     $ script/install git://github.com/technicalpickles/shoulda-generators.git
 
