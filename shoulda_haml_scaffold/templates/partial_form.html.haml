@@ -1,0 +1,7 @@
+= form.error_messages
+
+%dl
+<% for attribute in attributes -%>
+  %dt= form.label :<%= attribute.name %>
+  %dd= form.<%= attribute.field_type %> :<%= attribute.name %>
+<% end -%>

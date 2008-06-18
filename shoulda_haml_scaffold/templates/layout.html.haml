@@ -1,0 +1,15 @@
+!!! Transitional
+%html
+  %head
+    %title= "#{controller.controller_name}: #{controller.action_name}"
+    = stylesheet_link_tag 'blueprint/screen', :media => 'screen'
+    = stylesheet_link_tag 'blueprint/print', :media => 'print'
+    = "<!--[if IE]>#{stylesheet_link_tag 'blueprint/ie', :media => 'screen'}<![endif]-->"
+  %body
+    .container
+
+      #content{:class => 'column span-24'}
+        - flash.each do |key, value|
+          %div{:class => key}= h(value)
+
+        = yield

@@ -1,0 +1,7 @@
+%h1 New <%= singular_name %>
+
+- form_for(@<%= singular_name %>) do |form|
+  = render :partial => 'form', :locals => {:form => form}
+  %p= form.submit "Create"
+
+%p= link_to 'Back', <%= plural_name %>_path
