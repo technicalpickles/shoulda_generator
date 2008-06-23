@@ -20,10 +20,17 @@ The next morning, I was struck awake at 5am with the inspiration to start implem
  * a factory using [factory_girl](http://github.com/thoughtbot/factory_girl)
  * a [shoulda](http://thoughtbot.com/projects/shoulda) unit test with a few simple 'should's
 
-Prereqs:
+#### Prereqs:
 
  * [shoulda](http://thoughtbot.com/projects/shoulda) installed as a plugin
  * [factory_girl](http://github.com/thoughtbot/factory_girl) gem installed
+
+In `test/test_helper.rb`, include this:
+
+    require 'factory_girl'
+    Dir[File.join(RAILS_ROOT, 'test', 'factories', '*')].each do |file|
+      require file
+    end
 
 ### shoulda\_haml\_scaffold
 
@@ -39,6 +46,7 @@ Prereqs:
  * [shoulda](http://thoughtbot.com/projects/shoulda) installed as a plugin
  * [factory_girl](http://github.com/thoughtbot/factory_girl) gem installed
  * [haml](http://haml.hamptoncatlin.com/) gem installed on the system, and the project has been hamlified using  `haml --rails` on the project
+ * the code snippet above for `test/test_helper.rb`
 
 ## getting it
 
@@ -46,7 +54,7 @@ You can install it as a plugin for the time being. I plan on having a gem soon e
 
 With Rails 2.1, you can do:
 
-    $ script/install git://github.com/technicalpickles/shoulda-generators.git
+    $ script/plugin install git://github.com/technicalpickles/shoulda-generators.git
 
 ... or better yet, use piston 1.9.x...
 
@@ -69,3 +77,5 @@ Add symlinks so that Rails will pickup the generators from your checkout:
 
     $ mkdir -p ~/.rails/generators
     $ ln -s shoulda-generators/*_generator ~/.rails/generators
+
+Send pull requests to me, and I'll take a look at them.
