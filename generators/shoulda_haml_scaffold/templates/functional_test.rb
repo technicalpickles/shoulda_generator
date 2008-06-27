@@ -15,6 +15,7 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
     end
 
     should_respond_with :success
+    should_render_template :new
     should_assign_to :<%= file_name %>
   end
 
@@ -33,6 +34,7 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
       get :show, :id => @<%= file_name %>.id
     end
     should_respond_with :success
+    should_render_template :show
     should_assign_to :<%= file_name %>
   end
 
@@ -42,6 +44,7 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
       get :edit, :id => @<%= file_name %>.id
     end
     should_respond_with :success
+    should_render_template :edit
     should_assign_to :<%= file_name %>
   end
 
@@ -52,7 +55,6 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
     end
     should_redirect_to '<%= file_name %>_path(@<%= file_name %>)'
   end
-
 
   context 'DELETE to destroy' do
     setup do
