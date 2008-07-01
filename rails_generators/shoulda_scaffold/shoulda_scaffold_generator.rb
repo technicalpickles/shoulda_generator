@@ -1,5 +1,5 @@
-class ShouldaHamlScaffoldGenerator < Rails::Generator::NamedBase
-  default_options :skip_timestamps => false, :skip_migration => false, :skip_layout => true
+class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
+  default_options :skip_timestamps => false, :skip_migration => false, :skip_layout => true, :templating => 'haml'
 
   attr_reader   :controller_name,
                 :controller_class_path,
@@ -42,23 +42,19 @@ class ShouldaHamlScaffoldGenerator < Rails::Generator::NamedBase
       m.directory(File.join('app/views/layouts', controller_class_path))
       m.directory(File.join('test/functional', controller_class_path))
       m.directory(File.join('test/unit', class_path))
+
       m.directory('public/stylesheets/blueprint')
 
-      for action in scaffold_views
+      for view in scaffold_views
         m.template(
-          "view_#{action}.html.haml",
-          File.join('app/views', controller_class_path, controller_file_name, "#{action}.html.haml")
+          "#{templating}/#{view}.html.#{templating}",
+          File.join('app/views', controller_class_path, controller_file_name, "#{view}.html.#{templating}")
         )
       end
-      #
-      # Form partial.
-      m.template(
-        'partial_form.html.haml', 
-        File.join('app/views', controller_class_path, controller_file_name, '_form.html.haml')
-      )
 
       # Layout and stylesheet.
-      m.template('layout.html.haml', File.join('app/views/layouts', controller_class_path, "#{controller_file_name}.html.haml"))
+      m.template("#{templating}/layout.html.#{templating}", File.join('app/views/layouts', controller_class_path, "#{controller_file_name}.html.#{templating}"))
+
       %w(print screen ie).each do |stylesheet|
         m.template("blueprint/#{stylesheet}.css", "public/stylesheets/blueprint/#{stylesheet}.css")
       end
@@ -76,6 +72,10 @@ class ShouldaHamlScaffoldGenerator < Rails::Generator::NamedBase
     end
   end
 
+  def templating
+    options[:templating]
+  end
+
   protected
     # Override with your own usage banner.
     def banner
@@ -89,10 +89,11 @@ class ShouldaHamlScaffoldGenerator < Rails::Generator::NamedBase
              "Don't add timestamps to the migration file for this model") { |v| options[:skip_timestamps] = v }
       opt.on("--skip-migration",
              "Don't generate a migration file for this model") { |v| options[:skip_migration] = v }
+      opt.on("--templating [erb|haml]", "Specify the templating to use (haml by default)") { |v| options[:templating] = v }
     end
 
     def scaffold_views
-      %w[ index show new edit ]
+      %w[ index show new edit _form ]
     end
 
     def model_name
