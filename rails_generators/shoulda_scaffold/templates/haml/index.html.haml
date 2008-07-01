@@ -6,13 +6,13 @@
     %th <%= attribute.column.human_name %>
 <% end -%>
 
-- for <%= singular_name %> in @<%= plural_name %>
-  %tr
-<% for attribute in attributes -%>
-    %td= h <%= singular_name %>.<%= attribute.name %>
-<% end -%>
-    %td= link_to 'Show', <%= singular_name %>
-    %td= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>)
-    %td= link_to 'Destroy', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete
+  - for <%= singular_name %> in @<%= plural_name %>
+    %tr
+  <% for attribute in attributes -%>
+      %td= h <%= singular_name %>.<%= attribute.name %>
+  <% end -%>
+      %td= link_to 'Show', <%= singular_name %>
+      %td= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>)
+      %td= link_to 'Destroy', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete
 
 %p= link_to 'New <%= singular_name %>', new_<%= singular_name %>_path
