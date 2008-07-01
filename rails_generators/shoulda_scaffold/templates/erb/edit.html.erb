@@ -3,7 +3,7 @@
 <%% form_for(@<%= singular_name %>) do |form| %>
   <%%= render :partial => 'form', :locals => {:form => form} %>
   <p><%%= form.submit 'Update' %></p>
-<%% end %%>
+<%% end %>
 
 <p>
   <%%= link_to 'Show', @<%= singular_name %> %>
