@@ -1,4 +1,4 @@
-Manifest
+Manifest.txt
 rails_generators/shoulda_model/shoulda_model_generator.rb
 rails_generators/shoulda_model/templates/factory.rb
 rails_generators/shoulda_model/templates/fixtures.yml
@@ -28,3 +28,5 @@ rails_generators/shoulda_scaffold/templates/helper.rb
 rails_generators/shoulda_scaffold/USAGE
 Rakefile
 README.markdown
+shoulda_generator.gemspec
+Manifest
