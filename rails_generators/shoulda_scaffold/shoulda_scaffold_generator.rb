@@ -1,5 +1,5 @@
 class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
-  default_options :skip_timestamps => false, :skip_migration => false, :skip_layout => true, :templating => 'haml'
+  default_options :skip_timestamps => false, :skip_migration => false, :skip_layout => true, :templating => 'haml', :functional_test_style => 'should_be_restful'
 
   attr_reader   :controller_name,
                 :controller_class_path,
@@ -63,7 +63,7 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
         'controller.rb', File.join('app/controllers', controller_class_path, "#{controller_file_name}_controller.rb")
       )
 
-      m.template('functional_test.rb', File.join('test/functional', controller_class_path, "#{controller_file_name}_controller_test.rb"))
+      m.template("functional_test/#{functional_test_style}.rb", File.join('test/functional', controller_class_path, "#{controller_file_name}_controller_test.rb"))
       m.template('helper.rb',          File.join('app/helpers',     controller_class_path, "#{controller_file_name}_helper.rb"))
 
       m.route_resources controller_file_name
@@ -74,6 +74,10 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
 
   def templating
     options[:templating]
+  end
+
+  def functional_test_style
+    options[:functional_test_style]
   end
 
   protected
@@ -90,6 +94,7 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
       opt.on("--skip-migration",
              "Don't generate a migration file for this model") { |v| options[:skip_migration] = v }
       opt.on("--templating [erb|haml]", "Specify the templating to use (haml by default)") { |v| options[:templating] = v }
+      opt.on("--functional-test-style [basic|should_be_restful]", "Specify the style of the functional test (should_be_restful by default)") { |v| options[:functional_test_style] = v }
     end
 
     def scaffold_views

@@ -1,4 +1,3 @@
-Manifest.txt
 rails_generators/shoulda_model/shoulda_model_generator.rb
 rails_generators/shoulda_model/templates/factory.rb
 rails_generators/shoulda_model/templates/fixtures.yml
@@ -17,7 +16,8 @@ rails_generators/shoulda_scaffold/templates/erb/index.html.erb
 rails_generators/shoulda_scaffold/templates/erb/layout.html.erb
 rails_generators/shoulda_scaffold/templates/erb/new.html.erb
 rails_generators/shoulda_scaffold/templates/erb/show.html.erb
-rails_generators/shoulda_scaffold/templates/functional_test.rb
+rails_generators/shoulda_scaffold/templates/functional_test/basic.rb
+rails_generators/shoulda_scaffold/templates/functional_test/should_be_restful.rb
 rails_generators/shoulda_scaffold/templates/haml/_form.html.haml
 rails_generators/shoulda_scaffold/templates/haml/edit.html.haml
 rails_generators/shoulda_scaffold/templates/haml/index.html.haml
