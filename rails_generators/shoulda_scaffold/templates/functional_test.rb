@@ -21,8 +21,8 @@ class <%= controller_class_name %>ControllerTest < ActionController::TestCase
 
   context 'POST to create' do
     setup do
-      post :create, :place => Factory.attributes_for(:<%= file_name %>)
-      @<%= file_name %> = Place.find(:all).last
+      post :create, :<%= file_name %> => Factory.attributes_for(:<%= file_name %>)
+      @<%= file_name %> = <%= class_name %>.find(:all).last
     end
     
     should_redirect_to '<%= file_name %>_path(@<%= file_name %>)'
