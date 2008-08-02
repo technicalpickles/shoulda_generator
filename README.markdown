@@ -71,11 +71,11 @@ Usage is the same as the default Rails generators.
 
 Make a checkout somewhere:
 
-    $ git clone git://github.com/technicalpickles/shoulda-generators.git
+    $ git clone git://github.com/technicalpickles/shoulda_generator.git
 
 Add symlinks so that Rails will pickup the generators from your checkout:
 
     $ mkdir -p ~/.rails/generators
-    $ ln -s shoulda-generators/*_generator ~/.rails/generators
+    $ ln -s shoulda_generator/*_generator ~/.rails/generators
 
 Send pull requests to me, and I'll take a look at them.
