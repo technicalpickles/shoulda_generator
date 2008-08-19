@@ -28,11 +28,7 @@ class ShouldaModelGenerator < Rails::Generator::NamedBase
   end
 
   def factory_line(attribute)
-    unless attribute.name == 'name'
-      "#{file_name}.#{attribute.name} '#{attribute.default}'"
-    else
-      "#{file_name}.add_attribute '#{attribute.name}', '#{attribute.default}'"
-    end
+    "#{file_name}.#{attribute.name} '#{attribute.default}'"
   end
 
   protected
