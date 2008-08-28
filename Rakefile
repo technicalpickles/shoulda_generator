@@ -6,5 +6,5 @@ Echoe.new('shoulda_generator') do |p|
   p.email = 'josh@technicalpickles.com'
   p.summary = 'Generators which create tests using shoulda'
   p.url = 'http://github.com/technicalpickles/shoulda_generator'
-  p.version = '0.1.0'
+  p.version = '0.1.1'
 end
