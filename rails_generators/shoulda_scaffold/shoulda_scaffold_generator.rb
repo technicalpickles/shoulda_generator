@@ -1,3 +1,66 @@
+class ShouldaScaffoldGeneratorConfig
+  
+  DEFAULT_TEMPLATING = 'haml'
+  DEFAULT_FUNCTIONAL_TEST_STYLE = 'should_be_restful'
+  
+  def initialize(arg = {})
+    @templating = DEFAULT_TEMPLATING
+    @functional_test_style = DEFAULT_FUNCTIONAL_TEST_STYLE
+    
+    @hash = load_file(config_file)
+    
+    @templating = @hash[:templating] if @hash.key? :templating
+    @functional_test_style = @hash[:functional_test_style] if @hash.key? :functional_test_style
+  end
+  
+  attr_reader :templating, :functional_test_style
+   
+  def load_file(filename)
+    begin
+      YAML.load(File.read(filename)) if filename and File.exist?(filename)
+    rescue ArgumentError
+      warn "Failed to load #{config_file_name}"
+    rescue Errno::EACCES
+      warn "Failed to load #{config_file_name} due to permissions problem."
+    end or {}
+  end
+  
+  def config_file
+     File.join user_home, '.shoulda_generator'
+  end
+  
+  ##
+  # The home directory for the user.
+
+  def user_home
+    @user_home ||= find_home
+  end
+  
+  ##
+  # Finds the user's home directory.
+  
+  def find_home
+    ['HOME', 'USERPROFILE'].each do |homekey|
+      return ENV[homekey] if ENV[homekey]
+    end
+
+    if ENV['HOMEDRIVE'] && ENV['HOMEPATH'] then
+      return "#{ENV['HOMEDRIVE']}:#{ENV['HOMEPATH']}"
+    end
+
+    begin
+      File.expand_path("~")
+    rescue
+      if File::ALT_SEPARATOR then
+          "C:/"
+      else
+          "/"
+      end
+    end
+  end
+  
+end
+
 class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
   default_options :skip_timestamps => false, :skip_migration => false, :skip_layout => true, :templating => 'haml', :functional_test_style => 'should_be_restful'
 
@@ -15,7 +78,9 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
 
   def initialize(runtime_args, runtime_options = {})
     super
-
+    
+    @configuration = ShouldaScaffoldGeneratorConfig.new
+    
     @controller_name = @name.pluralize
 
     base_name, @controller_class_path, @controller_file_path, @controller_class_nesting, @controller_class_nesting_depth = extract_modules(@controller_name)
@@ -73,11 +138,11 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
   end
 
   def templating
-    options[:templating]
+    @configuration.templating
   end
 
   def functional_test_style
-    options[:functional_test_style]
+    @configuration.functional_test_style
   end
 
   protected
