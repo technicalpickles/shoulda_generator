@@ -26,14 +26,7 @@ class ShouldaScaffoldGeneratorConfig
   end
   
   def config_file
-     File.join user_home, '.shoulda_generator'
-  end
-  
-  ##
-  # The home directory for the user.
-
-  def user_home
-    @user_home ||= find_home
+     File.join find_home, '.shoulda_generator'
   end
   
   ##
