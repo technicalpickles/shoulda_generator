@@ -16,7 +16,7 @@ class ShouldaModelGenerator < Rails::Generator::NamedBase
       m.template 'unit_test.rb',  File.join('test/unit', class_path, "#{file_name}_test.rb")
 
       unless options[:skip_factory] 
-       	m.template 'factory.rb',  File.join('test/factories', class_path, "#{file_name}.rb")
+       	m.template 'factory.rb',  File.join('test/factories', class_path, "#{file_name}_factory.rb")
       end
 
       unless options[:skip_migration]
