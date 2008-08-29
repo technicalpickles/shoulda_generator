@@ -73,8 +73,8 @@ You can override the default values for templating and functional\_test\_style b
 
 example `~/.shoulda\_generator`:
 
-    :templating: erb # supported options are haml|erb
-    :functional_test_syle: should_be_restful # supported options basic|should_be_restful
+    :templating: erb # supported options: haml|erb
+    :functional_test_syle: should_be_restful # supported options: basic|should_be_restful
 
 ## developing it
 
