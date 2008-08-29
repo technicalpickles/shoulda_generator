@@ -69,7 +69,7 @@ Usage is the same as the default Rails generators.
 
 ## configuring it
 
-You can override the default values for templating and functional\_test\_style by placing a .shoulda\_generator in your home directory.
+You can override the default values for templating and functional\_test\_style by placing a .shoulda\_generator  file in your home directory.
 
 example `~/.shoulda\_generator`:
 
