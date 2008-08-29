@@ -1,3 +1,7 @@
+#--
+# ShouldaScaffoldGeneratorConfig based on rubygems code. Thank you Chad Fowler, Rich Kilmer, Jim Weirich and others.
+#++
+
 class ShouldaScaffoldGeneratorConfig
   
   DEFAULT_TEMPLATING = 'haml'
@@ -52,8 +56,7 @@ class ShouldaScaffoldGeneratorConfig
           "/"
       end
     end
-  end
-  
+  end  
 end
 
 class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
