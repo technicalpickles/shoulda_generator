@@ -32,7 +32,7 @@ In `test/test_helper.rb`, include this:
       require file
     end
 
-### shoulda\_haml\_scaffold
+### shoulda\_scaffold
 
  * everything included in shoulda_model
  * a controller (sans unnecessary comments)
@@ -66,6 +66,15 @@ Usage is the same as the default Rails generators.
 
     $ script/generate shoulda_model post title:string body:text published:boolean 
     $ script/generate shoulda_scaffold post title:string body:text published:boolean 
+
+## configuring it
+
+You can override the default values for templating and functional\_test\_style by placing a .shoulda\_generator in your home directory.
+
+example `~/.shoulda\_generator`:
+
+    :templating: erb # supported options are haml|erb
+    :functional_test_syle: should_be_restful # supported options basic|should_be_restful
 
 ## developing it
 
