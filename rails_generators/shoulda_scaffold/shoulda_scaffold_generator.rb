@@ -55,7 +55,7 @@ class ShouldaScaffoldGeneratorConfig
 end
 
 class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
-  default_options :skip_timestamps => false, :skip_migration => false, :skip_layout => true, :templating => 'haml', :functional_test_style => 'should_be_restful'
+  default_options :skip_timestamps => false, :skip_migration => false, :skip_layout => true
 
   attr_reader   :controller_name,
                 :controller_class_path,
@@ -151,9 +151,7 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
              "Don't add timestamps to the migration file for this model") { |v| options[:skip_timestamps] = v }
       opt.on("--skip-migration",
              "Don't generate a migration file for this model") { |v| options[:skip_migration] = v }
-      opt.on("--templating [erb|haml]", "Specify the templating to use (haml by default)") { |v| options[:templating] = v }
-      opt.on("--functional-test-style [basic|should_be_restful]", "Specify the style of the functional test (should_be_restful by default)") { |v| options[:functional_test_style] = v }
-    end
+     end
 
     def scaffold_views
       %w[ index show new edit _form ]
