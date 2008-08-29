@@ -15,6 +15,8 @@ class ShouldaScaffoldGeneratorConfig
   
   attr_reader :templating, :functional_test_style
    
+  private
+   
   def load_file(filename)
     begin
       YAML.load(File.read(filename)) if filename and File.exist?(filename)
