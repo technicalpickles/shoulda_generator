@@ -71,7 +71,7 @@ Usage is the same as the default Rails generators.
 
 You can override the default values for templating and functional\_test\_style by placing a .shoulda\_generator  file in your home directory.
 
-example `~/.shoulda\_generator`:
+example `.shoulda\_generator`:
 
     :templating: erb # supported options: haml|erb
     :functional_test_syle: basic # supported options: should_be_restful|basic
