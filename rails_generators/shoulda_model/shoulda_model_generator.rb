@@ -43,7 +43,7 @@ class ShouldaModelGenerator < Rails::Generator::NamedBase
              "Don't add timestamps to the migration file for this model") { |v| options[:skip_timestamps] = v }
       opt.on("--skip-migration", 
              "Don't generate a migration file for this model") { |v| options[:skip_migration] = v }
-      opt.on("--skip-fixture",
-             "Don't generation a fixture file for this model") { |v| options[:skip_fixture] = v}
+      opt.on("--skip-factory",
+             "Don't generation a fixture file for this model") { |v| options[:skip_factory] = v}
     end
 end
