@@ -18,8 +18,17 @@ Description:
     the create/show/update/destroy, forms to create and edit your posts, and
     an index that lists them all, as well as a map.resources :posts
     declaration in config/routes.rb.
+    
+    You can override the default values for templating and
+    functional\_test\_style by placing a .shoulda\_generator file in your home
+    directory.
+
+    Here's an example `.shoulda_generator`:
+
+        :templating: erb              # supported options: haml|erb
+        :functional_test_syle: basic  # supported options: should_be_restful|basic
 
 Examples:
-    `./script/generate scaffold post` # no attributes, view will be anemic
-    `./script/generate scaffold post title:string body:text published:boolean`
-    `./script/generate scaffold purchase order_id:integer amount:decimal`
+    `./script/generate shoulda_scaffold post` # no attributes, view will be anemic
+    `./script/generate shoulda_scaffold post title:string body:text published:boolean`
+    `./script/generate shoulda_scaffold purchase order_id:integer amount:decimal`
