@@ -1,0 +1,8 @@
+ * When installing, there's an warning:
+ 
+    Successfully installed shoulda_generator-0.2.0
+    1 gem installed
+    Installing ri documentation for shoulda_generator-0.2.0...
+    File not found: lib
+ 
+ * Support using resource_controller?
