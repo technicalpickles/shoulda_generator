@@ -1,20 +1,17 @@
 #--
-# ShouldaScaffoldGeneratorConfig based on rubygems code. Thank you Chad Fowler, Rich Kilmer, Jim Weirich and others.
+# ShouldaScaffoldGeneratorConfig based on rubygems code.
+# Thank you Chad Fowler, Rich Kilmer, Jim Weirich and others.
 #++
-
 class ShouldaScaffoldGeneratorConfig
   
   DEFAULT_TEMPLATING = 'haml'
   DEFAULT_FUNCTIONAL_TEST_STYLE = 'should_be_restful'
   
-  def initialize(arg = {})
-    @templating = DEFAULT_TEMPLATING
-    @functional_test_style = DEFAULT_FUNCTIONAL_TEST_STYLE
+  def initialize()
+    @config = load_file(config_file)
     
-    @hash = load_file(config_file)
-    
-    @templating = @hash[:templating] if @hash.key? :templating
-    @functional_test_style = @hash[:functional_test_style] if @hash.key? :functional_test_style
+    @templating = @config[:templating] || DEFAULT_TEMPLATING
+    @functional_test_style = @config[:functional_test_style] || DEFAULT_FUNCTIONAL_TEST_STYLE
   end
   
   attr_reader :templating, :functional_test_style
@@ -32,7 +29,7 @@ class ShouldaScaffoldGeneratorConfig
   end
   
   def config_file
-     File.join find_home, '.shoulda_generator'
+     File.join(find_home, '.shoulda_generator')
   end
   
   ##
@@ -56,7 +53,7 @@ class ShouldaScaffoldGeneratorConfig
           "/"
       end
     end
-  end  
+  end
 end
 
 class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
@@ -136,11 +133,11 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
   end
 
   def templating
-    @configuration.templating
+    options[:templating] || @configuration.templating
   end
 
   def functional_test_style
-    @configuration.functional_test_style
+    options[:functional_test_style] || @configuration.functional_test_style
   end
 
   protected
@@ -156,6 +153,9 @@ class ShouldaScaffoldGenerator < Rails::Generator::NamedBase
              "Don't add timestamps to the migration file for this model") { |v| options[:skip_timestamps] = v }
       opt.on("--skip-migration",
              "Don't generate a migration file for this model") { |v| options[:skip_migration] = v }
+      opt.on("--templating [erb|haml]", "Specify the templating to use (haml by default)") { |v| options[:templating] = v }
+      opt.on("--functional-test-style [basic|should_be_restful]", "Specify the style of the functional test (should_be_restful by default)") { |v| options[:functional_test_style] = v }
+      
      end
 
     def scaffold_views

@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new("= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Josh Nichols"]
-  s.date = %q{2008-08-28}
+  s.date = %q{2008-09-05}
   s.description = %q{Generators which create tests using shoulda}
   s.email = %q{josh@technicalpickles.com}
   s.extra_rdoc_files = ["README.markdown"]
