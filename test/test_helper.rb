@@ -19,8 +19,11 @@ require 'active_support/core_ext/test'
 
 
 require File.join(File.dirname(__FILE__), 'stolen_from_railties')
-@test_log = File.join(RAILS_ROOT, 'test.log')
-RAILS_DEFAULT_LOGGER = Logger.new(@test_log)
+
+unless defined?(RAILS_DEFAULT_LOGGER)
+  @test_log = File.join(RAILS_ROOT, 'test.log')
+  RAILS_DEFAULT_LOGGER = Logger.new(@test_log)
+end
 
 class GeneratorTestCase  
   # Asserts that the given factory was created.
