@@ -1,8 +1,9 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
+require File.join(File.dirname(__FILE__), "..", "..", "rails_generators", "shoulda_model", "shoulda_model_generator")
+
 class ShouldaModelGeneratorTest < GeneratorTestCase
-  
-  
+
   context "running the default generator" do
     setup do
       run_generator('shoulda_model', %w(Product name:string supplier_id:integer created_at:timestamp))
