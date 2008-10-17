@@ -13,6 +13,9 @@ gem 'rails'
 gem 'thoughtbot-shoulda'
 require 'shoulda'
 
+gem 'mocha'
+require 'mocha'
+
 require File.join(File.dirname(__FILE__), 'shoulda_macros', 'generator_macros')
 
 require 'active_support/core_ext/test'
@@ -25,7 +28,7 @@ unless defined?(RAILS_DEFAULT_LOGGER)
   RAILS_DEFAULT_LOGGER = Logger.new(@test_log)
 end
 
-class GeneratorTestCase  
+class GeneratorTestCase
   # Asserts that the given factory was created.
   def assert_generated_factory_for(name)
     assert_generated_file "test/factories/#{name.to_s.underscore}_factory.rb"
