@@ -1,4 +1,4 @@
-<h1> Listing <%= plural_name %></h1>
+<h1> Listing <%= plural_name.humanize %></h1>
 
 <table>
   <tr>
@@ -19,4 +19,4 @@
   <%% end %>
 </table>
 
-<p><%%= link_to 'New <%= singular_name %>', new_<%= singular_name %>_path %></p>
+<p><%%= link_to 'New <%= singular_name.humanize %>', new_<%= singular_name %>_path %></p>
