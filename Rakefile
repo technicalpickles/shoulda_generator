@@ -21,3 +21,6 @@ Rake::TestTask.new do |t|
   t.pattern = 'test/**/*_test.rb'
   t.verbose = false
 end
+
+desc 'Test by default'
+task :default => :test
