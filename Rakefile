@@ -3,7 +3,7 @@ require 'rake/testtask'
 
 begin
   require 'jeweler'
-  Jeweler.gemspec = Gem::Specification.new do |s|
+  Jeweler::Tasks.new do |s|
     s.name = "shoulda_generator"
     s.summary = "Generators which create tests using shoulda"
     s.email = "josh@technicalpickles.com"
