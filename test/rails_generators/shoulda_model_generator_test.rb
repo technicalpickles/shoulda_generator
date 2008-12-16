@@ -2,10 +2,6 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 
 class ShouldaModelGeneratorTest < GeneratorTestCase
-
-  def setup
-    Rails::Generator::Base.stubs(:sources).returns([Rails::Generator::PathSource.new(:shoulda_generator, File.join(File.dirname(__FILE__), "..", "..", "rails_generators"))])
-  end
   context "running the default generator" do
     setup do
       run_generator('shoulda_model', %w(Product name:string supplier_id:integer created_at:timestamp))

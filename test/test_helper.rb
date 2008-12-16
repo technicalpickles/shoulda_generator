@@ -1,24 +1,16 @@
 require 'rubygems'
-gem 'ruby-debug'
 require 'ruby-debug'
-gem 'activesupport'
 require 'active_support'
-gem 'activerecord'
 require 'active_record'
-gem 'actionpack'
 require 'action_controller'
 require 'action_view'
-gem 'rails'
 
-gem 'thoughtbot-shoulda'
 require 'shoulda'
 
-gem 'mocha'
 require 'mocha'
 
 require File.join(File.dirname(__FILE__), 'shoulda_macros', 'generator_macros')
 
-require 'active_support/core_ext/test'
 
 
 require File.join(File.dirname(__FILE__), 'stolen_from_railties')
@@ -27,6 +19,8 @@ unless defined?(RAILS_DEFAULT_LOGGER)
   @test_log = File.join(RAILS_ROOT, 'test.log')
   RAILS_DEFAULT_LOGGER = Logger.new(@test_log)
 end
+
+Rails::Generator::Base.prepend_sources Rails::Generator::PathSource.new(:shoulda_generator, File.join(File.dirname(__FILE__), "..", "rails_generators"))
 
 class GeneratorTestCase
   # Asserts that the given factory was created.
