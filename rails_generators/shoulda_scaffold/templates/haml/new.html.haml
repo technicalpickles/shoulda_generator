@@ -1,4 +1,4 @@
-%h1 New <%= singular_name %>
+%h1 New <%= singular_name.humanize %>
 
 - form_for(@<%= singular_name %>) do |form|
   = render :partial => 'form', :locals => {:form => form}
