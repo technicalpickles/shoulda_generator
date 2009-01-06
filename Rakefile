@@ -10,7 +10,7 @@ begin
     s.homepage = "http://github.com/technicalpickles/shoulda_generator"
     s.description = "Generators which create tests using shoulda"
     s.authors = ["Josh Nichols"]
-    s.files =  FileList["[A-Z]*", "{generators,lib,test}/**/*"]
+    s.files =  FileList["[A-Z]*", "{rails_generators,lib,test}/**/*"]
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
